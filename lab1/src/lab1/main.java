@@ -22,7 +22,7 @@ public class main {
 					incomeList = new double[]{510300,204100,160725,84200,39475,9700,0};
 					break;
 				case "HEAD":
-					incomeList = new double[]{510300,204100,160725,84200,52850,13850,0};
+					incomeList = new double[]{510300,204100,160700,84200,52850,13850,0};
 					break;
 				case "JOINT":
 					incomeList = new double[]{612350,408200,321450,168400,78950,19400,0};
