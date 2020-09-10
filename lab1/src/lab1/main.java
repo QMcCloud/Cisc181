@@ -46,4 +46,7 @@ public class main {
 		System.out.println("Your income tax should be: " + tax);
 		sc.close();
 	}
+	
 }
+
+
