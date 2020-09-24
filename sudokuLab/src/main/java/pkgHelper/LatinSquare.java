@@ -1,7 +1,7 @@
 package pkgHelper;
 
 public class LatinSquare {
-	
+
 	private int[][] LatinSquare;
 
 	public LatinSquare() {
@@ -10,54 +10,67 @@ public class LatinSquare {
 
 	public LatinSquare(int[][] latinSquare) {
 		super();
-		LatinSquare = latinSquare;
+		this.LatinSquare = latinSquare;
 	}
-	
-	int[][] getLatinSquare(){
-		return LatinSquare;
+
+	int[][] getLatinSquare() {
+		return this.LatinSquare;
 	}
-	
+
 	void setLatinSquare(int[][] s) {
-		LatinSquare = s;
+		this.LatinSquare = s;
 	}
-	
-	boolean hasDuplicates​(int[] arr) {
-		for(int i = 0; i < arr.length * arr.length; i++)if(arr[i/arr.length] == arr[i%arr.length] && i/arr.length != i%arr.length)return true;
+
+	static boolean hasDuplicates​(int[] arr) {
+		for (int i = 0; i < arr.length -1; i++)
+			for (int j = i+1; j < arr.length; j++)
+				if (arr[i] == arr[j])
+					return true;
 		return false;
 	}
-	
-	boolean doesElementExist​(int[] arr, int iValue) {
-		for(int i = 0; i < arr.length; i++)if(arr[i] == iValue)return true;
+
+	static boolean doesElementExist​(int[] arr, int iValue) {
+		for (int i = 0; i < arr.length; i++)
+			if (arr[i] == iValue)
+				return true;
 		return false;
 	}
-	
-	boolean hasAllValues(int[] arr1,int[] arr2) {
-		for(int i = 0; i < arr2.length; i++) if(!doesElementExist​(arr1, arr2[i]))return false;
+
+	static boolean hasAllValues(int[] arr1, int[] arr2) {
+		for (int i = 0; i < arr2.length; i++)
+			if (!doesElementExist​(arr1, arr2[i]))
+				return false;
 		return true;
 	}
-	
+
 	int[] getColumn​(int iCol) {
-		int col[] = new int[LatinSquare[0].length];
-		for(int i = 0; i < LatinSquare[0].length; i++)col[i] = LatinSquare[iCol][i];
+		int col[] = new int[this.LatinSquare.length];
+		for (int i = 0; i < this.LatinSquare.length; i++)
+			col[i] = this.LatinSquare[i][iCol];
 		return col;
 	}
-	
+
 	int[] getRow​(int iRow) {
-		return LatinSquare[iRow];
+		return this.LatinSquare[iRow];
 	}
-	
+
 	boolean isLatinSquare() {
-		for(int i = 0; i < LatinSquare.length;i++) {
-			if(hasDuplicates​(getColumn​(i))|| hasDuplicates​(getRow​(i))) return false;
-			for(int j = 0; j<LatinSquare[i].length;j++) {
-				if( (! hasAllValues(getRow​(i),getRow​(j))) || (! hasAllValues(getColumn​(i),getColumn​(j)))) return false;
-			}
+		for (int i = 0; i < this.LatinSquare.length; i++) {
+			if (hasDuplicates​(this.getColumn​(i)) || hasDuplicates​(this.getRow​(i)))
+				return false;
+			for (int j = 0; j < this.LatinSquare.length; j++)
+				if (!hasAllValues(this.getRow​(i), this.getRow​(j))
+						|| !hasAllValues(this.getColumn​(i), this.getColumn​(j)))
+					return false;
 		}
 		return true;
-	} 
-	
+	}
+
 	public boolean containsZero() {
-		for(int i = 0; i < LatinSquare.length*LatinSquare[0].length; i++)if(LatinSquare[i%LatinSquare.length][i/LatinSquare[0].length] == 0)return true;
+		for (int i = 0; i < this.LatinSquare.length; i++)
+			for (int j = 0; j < this.LatinSquare[i].length; j++)
+				if (this.LatinSquare[i][j] == 0)
+					return true;
 		return false;
 	}
 }
